@@ -32,10 +32,6 @@ function AppWrapper() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [navigate]);
 
-  const userId =
-    localStorage.getItem("userId") ||
-    (localStorage.setItem("userId", Date.now().toString()),
-    localStorage.getItem("userId"));
 
   return (
     <>
@@ -75,7 +71,7 @@ export default function App() {
 
   return (
     <Router>
-     <CartProvider userId={userId}>
+     <CartProvider>
         <SearchProvider>
           <AppWrapper />
         </SearchProvider>
