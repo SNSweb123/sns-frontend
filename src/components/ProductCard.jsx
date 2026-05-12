@@ -10,11 +10,9 @@ const ProductCard = ({ product, onBuy }) => {
   const navigate = useNavigate();
 
 
- const isAlreadyInCart =
-  product.type === "subscription"
-    ? cartItems.some(
-        item => item._id === product._id
-      )
+const isAlreadyInCart =
+  product?.type === "subscription"
+    ? cartItems?.some(item => item?._id === product?._id)
     : false;
 
 const handleClick = () => {

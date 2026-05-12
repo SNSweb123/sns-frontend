@@ -14,7 +14,7 @@ function Home() {
   const fetchProducts = async () => {
     try {
      const response = await axios.get('/api/products?ts=' + Date.now());
-      setProducts(response.data);
+     setProducts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {
@@ -33,9 +33,10 @@ function Home() {
 }, []);
 
 
- const filteredProducts = products.filter((p) =>
-  p.name?.toLowerCase().includes(search.toLowerCase())
-);
+const filteredProducts = (Array.isArray(products) ? products : [])
+  .filter((p) =>
+    (p?.name || "").toLowerCase().includes((search || "").toLowerCase())
+  );
 
   return (
     <div className="App">
