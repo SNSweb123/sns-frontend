@@ -4,6 +4,8 @@ import ProductCard from '../components/ProductCard';
 import { useSearch } from "../pages/SearchContext";
 import '../App.css';
 
+const BASE_URL = "https://sns-backend-h7lf.onrender.com";
+
 function Home() {
   
 
@@ -11,10 +13,14 @@ function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { search } = useSearch();
+
+
+
   const fetchProducts = async () => {
-    try {
-    const BASE_URL = "https://sns-backend-h7lf.onrender.com";
-  axios.get(`${BASE_URL}/api/products?ts=${Date.now()}`);
+    try {    
+   const response = await axios.get(
+        `${BASE_URL}/api/products?ts=${Date.now()}`
+      );
      setProducts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching products:', error);

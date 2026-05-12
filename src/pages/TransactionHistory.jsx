@@ -11,14 +11,13 @@ function TransactionHistory() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
+  const BASE_URL = "https://sns-backend-h7lf.onrender.com";
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const BASE_URL = "https://sns-backend-h7lf.onrender.com";
-
-axios.get(`${BASE_URL}/api/orders`);
+         const res = await axios.get(`${BASE_URL}/api/orders`);
         setOrders(res.data);
-console.log("ORDER DATA:", res.data[0]);
+          console.log("ORDER DATA:", res.data[0]);
       } catch (err) {
         console.error(err);
       } finally {
