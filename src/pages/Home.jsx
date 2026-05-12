@@ -7,29 +7,28 @@ import '../App.css';
 const BASE_URL = "https://sns-backend-h7lf.onrender.com";
 
 function Home() {
-  
-
-
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const { search } = useSearch();
 
 
+ const fetchProducts = async () => {
+  try {
+    setLoading(true); // 🔥 ADD THIS (important)
 
-  const fetchProducts = async () => {
-    try {    
-   const response = await axios.get(
-        `${BASE_URL}/api/products?ts=${Date.now()}`
-      );
-     setProducts(Array.isArray(response.data) ? response.data : []);
-    } catch (error) {
-      console.error('Error fetching products:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    const response = await axios.get(
+      `${BASE_URL}/api/products?ts=${Date.now()}`
+    );
 
-  useEffect(() => {
+    setProducts(Array.isArray(response.data) ? response.data : []);
+  } catch (error) {
+    console.error("Error fetching products:", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+ useEffect(() => {
   fetchProducts();
 
   const interval = setInterval(() => {

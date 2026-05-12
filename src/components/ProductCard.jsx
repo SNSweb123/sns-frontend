@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const ProductCard = ({ product, onBuy }) => {
-    console.log("TYPE:", product.type, "CODES:", product.availableCodes);
   const { addToCart, cartItems } = useCart();
   const navigate = useNavigate();
 
@@ -15,6 +14,9 @@ const isAlreadyInCart =
     ? cartItems?.some(item => item?._id === product?._id)
     : false;
 
+  const isOutOfStock =
+    product?.couponStats?.available === 0;
+
 const handleClick = () => {
   if (isAlreadyInCart || isOutOfStock) return;
 
@@ -22,7 +24,6 @@ const handleClick = () => {
   navigate('/checkout');
 };
 
-const isOutOfStock = false;
 
   return (
  <div 
@@ -33,7 +34,7 @@ const isOutOfStock = false;
   }}
 >
 <div className="product-image-top">
-  <img src={product.icon} alt={product.name} />
+ <img src={product?.icon || "https://via.placeholder.com/150"} alt={product?.name || "product"} />
 </div>
     
       
