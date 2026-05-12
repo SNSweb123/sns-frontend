@@ -13,7 +13,8 @@ function Home() {
   const { search } = useSearch();
   const fetchProducts = async () => {
     try {
-     const response = await axios.get('/api/products?ts=' + Date.now());
+    const BASE_URL = "https://sns-backend-h7lf.onrender.com";
+  axios.get(`${BASE_URL}/api/products?ts=${Date.now()}`);
      setProducts(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error('Error fetching products:', error);

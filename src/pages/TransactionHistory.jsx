@@ -14,7 +14,9 @@ function TransactionHistory() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get('/api/orders');
+        const BASE_URL = "https://sns-backend-h7lf.onrender.com";
+
+axios.get(`${BASE_URL}/api/orders`);
         setOrders(res.data);
 console.log("ORDER DATA:", res.data[0]);
       } catch (err) {
