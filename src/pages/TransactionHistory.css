@@ -1,0 +1,185 @@
+/* =========================
+   TRANSACTION DASHBOARD UI
+========================= */
+
+.transaction-wrapper {
+  padding: 28px;
+  border-radius: 24px;
+  background: linear-gradient(135deg, #0f172a, #111827);
+  color: #fff;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+}
+
+/* TITLE */
+.transaction-title {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #fff;
+}
+
+/* SEARCH */
+.transaction-search {
+  width: 100%;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+
+  font-size: 14px;
+  outline: none;
+}
+
+.transaction-search::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+/* TABLE CONTAINER */
+.transaction-table-container {
+  max-height:750px;
+  overflow: auto;
+  border-radius: 16px;
+}
+
+/* SCROLLBAR */
+.transaction-table-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transaction-table-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #7c3aed, #06b6d4);
+  border-radius: 10px;
+}
+
+/* TABLE */
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px;
+  height: 100%;
+}
+
+/* HEADER */
+.transaction-table thead th {
+  position: sticky;
+  top: 0;
+
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  color: #fff;
+
+  padding: 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ROWS */
+.transaction-table tbody tr {
+  background: rgba(255,255,255,0.03);
+  transition: 0.2s ease;
+}
+
+.transaction-table tbody tr:hover {
+  background: rgba(124,58,237,0.15);
+  transform: scale(1.01);
+}
+
+/* CELLS */
+.transaction-table td {
+  padding: 14px;
+  font-size: 13px;
+  color: #e5e7eb;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+}
+
+/* SR NO */
+.sr-no {
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+/* PRODUCT COLUMN */
+.product-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.product-cell div {
+  background: rgba(255,255,255,0.06);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+/* PRICE */
+.price {
+  color: #22c55e;
+  font-weight: 700;
+}
+
+/* TRANSACTION ID */
+.txn-id {
+  font-family: monospace;
+  color: #f472b6;
+  font-size: 12px;
+}
+
+/* LOADING / EMPTY */
+.transaction-loading,
+.transaction-empty {
+  text-align: center;
+  padding: 30px;
+  color: rgba(255,255,255,0.6);
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.pagination button {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  color: #fff;
+
+  font-weight: 600;
+}
+
+.pagination button:disabled {
+  background: rgba(255,255,255,0.2);
+  cursor: not-allowed;
+}
+
+.pagination span {
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .transaction-wrapper {
+    padding: 16px;
+  }
+
+  .transaction-title {
+    font-size: 18px;
+  }
+
+  .transaction-table {
+    min-width: 700px;
+  }
+}

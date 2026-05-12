@@ -1,0 +1,152 @@
+.about-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-top:80px;
+}
+
+/* ===== HERO ===== */
+.about-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.about-hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.about-hero h1 span {
+  color: #ff4d8d;
+}
+
+.about-hero p {
+  max-width: 650px;
+  margin: 15px auto 0;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ===== STORY ===== */
+.about-story {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+}
+
+.story-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  border: 1px solid #e5e7eb;
+}
+
+.story-text h2 {
+  margin-bottom: 15px;
+}
+
+.story-text p {
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* ===== STATS BOX ===== */
+.story-stats {
+  background: linear-gradient(135deg, #ff4d8d, #4f6ef7);
+  border-radius: 14px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-stats h3 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.story-stats p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* ===== WHY US ===== */
+.why-us {
+  text-align: center;
+}
+
+.why-us h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
+}
+
+.why-card {
+  background: #fff;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.07);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 45px rgba(0,0,0,0.12);
+}
+
+.why-card .icon {
+  width: 48px;
+  height: 48px;
+  background: #ffe4ee;
+  color: #ff4d8d;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  font-size: 20px;
+}
+
+.why-card h4 {
+  margin-bottom: 10px;
+}
+
+.why-card p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .story-card {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hero h1 {
+    font-size: 2.2rem;
+  }
+}
+.about-hero h1 span {
+  /* Gradient text */
+  background: linear-gradient(135deg, #f9048f 0%, #ebf301 100%); /* Teal → Blue */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+
+

@@ -1,0 +1,898 @@
+/* ================================
+   ADMIN PANEL — MODERN PROFESSIONAL UI
+================================ */
+
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --card-light: #1e293b;
+  --primary: #7c3aed;
+  --primary-hover: #6d28d9;
+  --secondary: #06b6d4;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+
+  --text: #f8fafc;
+  --text-light: #cbd5e1;
+  --border: rgba(255,255,255,0.08);
+
+  --shadow: 0 10px 35px rgba(0,0,0,0.35);
+  --radius: 18px;
+  --transition: 0.3s ease;
+}
+
+/* ================================
+   MAIN CONTAINER
+================================ */
+
+.admin-panel {
+  min-height: 100vh;
+  padding: 30px;
+  background:
+    radial-gradient(circle at top left, #312e81 0%, transparent 30%),
+    radial-gradient(circle at bottom right, #0f766e 0%, transparent 30%),
+    var(--bg);
+
+  color: var(--text);
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* ================================
+   TOP HEADER
+================================ */
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.admin-title h1 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.admin-title p {
+  color: var(--text-light);
+  font-size: 15px;
+}
+
+/* ================================
+   LOGOUT BUTTON
+================================ */
+
+.logout-btn {
+  padding: 12px 22px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* ================================
+   TAB BUTTONS
+================================ */
+
+.admin-tabs {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 35px;
+  flex-wrap: wrap;
+}
+
+.admin-tab-btn {
+  padding: 14px 24px;
+  margin-top: 15px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(12px);
+}
+
+.admin-tab-btn:hover {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.admin-tab-btn.active {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  box-shadow: 0 10px 25px rgba(124,58,237,0.35);
+}
+
+/* ================================
+   MAIN GRID
+================================ */
+
+.admin-content {
+  display: grid;
+  gap: 30px;
+  margin-top: 15px;
+}
+
+.form-preview-container {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* ================================
+   CARD STYLE
+================================ */
+
+.product-form,
+.preview-section,
+.product-item {
+  background: rgba(17,24,39,0.9);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 25px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+/* ================================
+   FORM SECTION
+================================ */
+
+.product-form h2,
+.preview-section h3,
+.product-list h2 {
+  margin-bottom: 22px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* FORM */
+
+.product-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* INPUTS */
+
+.product-form input,
+.product-form textarea,
+.product-form select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.05);
+  color: white;
+  font-size: 15px;
+  transition: var(--transition);
+}
+
+.product-form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.product-form input::placeholder,
+.product-form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.product-form input:focus,
+.product-form textarea:focus,
+.product-form select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.15);
+}
+
+/* SELECT */
+
+.product-form select {
+  appearance: none;
+  cursor: pointer;
+}
+
+/* FILE INPUT */
+
+.product-form input[type="file"] {
+  padding: 12px;
+  cursor: pointer;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+
+.product-form button,
+.product-item button {
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  transition: var(--transition);
+}
+
+/* MAIN SUBMIT */
+
+.upload-btn {
+  padding: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: white;
+  font-size: 16px;
+  margin-top: 10px;
+  box-shadow: 0 10px 25px rgba(124,58,237,0.3);
+}
+
+.upload-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+/* CANCEL */
+
+.product-form button[type="button"] {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+.product-form button[type="button"]:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* ================================
+   PREVIEW SECTION
+================================ */
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.preview-controls {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+  color: var(--text-light);
+}
+
+.preview-controls ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.preview-controls li {
+  margin-bottom: 8px;
+}
+
+/* ================================
+   PRODUCT LIST
+================================ */
+
+.product-list h2 {
+  margin-bottom: 25px;
+}
+
+/* GRID */
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+  gap: 24px;
+}
+
+/* PRODUCT CARD */
+
+.product-item {
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.product-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg,var(--primary),transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.product-item:hover {
+  transform: translateY(-6px);
+}
+
+
+/* ================================
+   COUPON BOX
+================================ */
+
+.product-item h4 {
+  margin-top: 15px;
+  margin-bottom: 12px;
+  color: white;
+}
+
+.product-item span {
+  color: #22c55e;
+  font-weight: 600;
+}
+
+/* ================================
+   SCROLLBAR
+================================ */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.12);
+  border-radius: 20px;
+}
+
+/* ================================
+   MOBILE RESPONSIVE
+================================ */
+
+@media (max-width: 1100px) {
+  .form-preview-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .admin-panel {
+    padding: 18px;
+  }
+
+  .admin-title h1 {
+    font-size: 28px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-tabs {
+    flex-direction: column;
+  }
+
+  .admin-tab-btn {
+    width: 100%;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-header {
+    flex-direction: column;
+  }
+
+  .product-actions {
+    width: 100%;
+  }
+
+  .product-actions button {
+    flex: 1;
+  }
+}
+
+/* =====================================
+   PRODUCT CARD
+===================================== */
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+
+  padding: 24px;
+
+  border-radius: 24px;
+
+  background: rgba(17,24,39,0.95);
+
+  border: 1px solid rgba(255,255,255,0.08);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.25);
+
+  transition: 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+/* =====================================
+   TOP SECTION
+===================================== */
+
+.product-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-info h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.product-subtitle {
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* =====================================
+   IMAGE
+===================================== */
+
+.product-thumb {
+  width: 75px;
+  height: 75px;
+
+  object-fit: contain;
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.06);
+
+  padding: 10px;
+
+  flex-shrink: 0;
+}
+
+/* =====================================
+   COUPON BOX
+===================================== */
+
+.coupon-box {
+  padding: 14px;
+
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.05);
+
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.coupon-box strong {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.coupon-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.coupon-stats span {
+  padding: 6px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.06);
+
+  color: #cbd5e1;
+
+  font-size: 13px;
+}
+
+/* =====================================
+   META INFO
+===================================== */
+
+.product-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 12px 14px;
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.04);
+}
+
+.meta-row span {
+  color: #94a3b8;
+}
+
+.meta-row strong {
+  color: white;
+}
+
+/* =====================================
+   COUPON LIST
+===================================== */
+
+.coupon-list {
+  margin-top: 15px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  max-height: 250px;   /* limit height */
+  overflow-y: auto;    /* vertical scrollbar */
+
+  padding-right: 6px;
+}
+/* Coupon Scrollbar */
+
+.coupon-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.coupon-list::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+}
+
+.coupon-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg,#7c3aed,#06b6d4);
+  border-radius: 20px;
+}
+
+
+
+.coupon-list h4 {
+  margin-bottom: 5px;
+}
+
+.coupon-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 14px;
+
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.04);
+}
+
+.coupon-delete-btn {
+  border: none;
+
+  padding: 8px 14px;
+
+  border-radius: 10px;
+
+  background: linear-gradient(135deg,#ef4444,#dc2626);
+
+  color: white;
+
+  cursor: pointer;
+}
+
+/* =====================================
+   FOOTER
+===================================== */
+.product-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* STATUS */
+
+.status-badge {
+  padding: 10px 14px;
+
+  border-radius: 999px;
+
+  background: rgba(34,197,94,0.12);
+
+  color: #22c55e;
+
+  font-weight: 700;
+
+  font-size: 14px;
+}
+
+/* =====================================
+   ACTIONS
+===================================== */
+
+.product-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.edit-btn,
+.delete-btn2 {
+  border: none;
+
+  padding: 12px 18px;
+
+  border-radius: 14px;
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg,#3b82f6,#2563eb);
+}
+
+.delete-btn2 {
+  background: linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+.edit-btn:hover,
+.delete-btn2:hover {
+  transform: translateY(-2px);
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media (max-width: 768px) {
+
+  .product-top {
+    flex-direction: column;
+  }
+
+  .product-thumb {
+    width: 100%;
+    height: 180px;
+  }
+
+  .product-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .product-actions {
+    width: 100%;
+  }
+
+  .product-actions button {
+    flex: 1;
+  }
+
+}
+/* ================================
+   COUPON DROPDOWN SECTION
+================================ */
+
+.coupon-section {
+  margin-top: 18px;
+}
+
+.toggle-coupons-btn {
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #7c3aed, #06b6d4);
+  transition: 0.25s ease;
+}
+
+.toggle-coupons-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.coupon-list {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.coupon-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  background: rgba(255,255,255,0.05);
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.coupon-code {
+  color: #22c55e;
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.delete-coupon-btn {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#ef4444,#dc2626);
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.delete-coupon-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .coupon-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .delete-coupon-btn {
+    width: 100%;
+  }
+}
+
+/* ================================
+   COUPON INPUT PROFESSIONAL UI
+================================ */
+
+.coupon-input-box {
+  width: 100%;
+  margin-top: 10px;
+
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  border-radius: 18px;
+  padding: 18px;
+
+  backdrop-filter: blur(12px);
+}
+
+/* LABEL */
+
+.coupon-label {
+  display: block;
+  margin-bottom: 12px;
+
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+/* TEXTAREA */
+
+.coupon-textarea {
+  width: 100%;
+  min-height: 200px;
+  max-height: 320px;
+
+  overflow-y: auto;
+  resize: vertical;
+
+  padding: 16px;
+
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+
+  background: rgba(0,0,0,0.25);
+  color: white;
+
+  font-size: 14px;
+  line-height: 1.7;
+
+  transition: 0.25s ease;
+}
+
+/* PLACEHOLDER */
+
+.coupon-textarea::placeholder {
+  color: rgba(255,255,255,0.4);
+  line-height: 1.7;
+}
+
+/* FOCUS */
+
+.coupon-textarea:focus {
+  outline: none;
+
+  border-color: #7c3aed;
+
+  box-shadow:
+    0 0 0 4px rgba(124,58,237,0.15),
+    0 10px 30px rgba(124,58,237,0.15);
+
+  background: rgba(0,0,0,0.35);
+}
+
+/* HELPER */
+
+.coupon-helper {
+  margin-top: 12px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  color: #22c55e;
+}
+
+/* SCROLLBAR */
+
+.coupon-textarea::-webkit-scrollbar {
+  width: 8px;
+}
+
+.coupon-textarea::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+  border-radius: 20px;
+}
+
+.coupon-textarea::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg,#7c3aed,#06b6d4);
+  border-radius: 20px;
+}
+.admin-title{
+  text-align: center;
+}
