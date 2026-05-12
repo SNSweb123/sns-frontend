@@ -64,11 +64,7 @@ function AppWrapper() {
 }
 
 export default function App() {
-  const userId =
-    localStorage.getItem("userId") ||
-    (localStorage.setItem("userId", Date.now().toString()),
-    localStorage.getItem("userId"));
-
+ 
   return (
     <Router>
      <CartProvider>
