@@ -4,7 +4,7 @@ import ProductCard from '../components/ProductCard';
 import './AdminPanel.css';
 import Swal from 'sweetalert2';
 import TransactionHistory from './TransactionHistory';
-
+import { BASE_URL } from "../config";
 
 
 function AdminPanel() {
@@ -31,9 +31,11 @@ function AdminPanel() {
     fetchProducts();
   }, []);
 
+  
+
   const fetchProducts = async () => {
   try {
-   const response = await axios.get('/api/products?ts=' + Date.now())
+  const response = await axios.get(`${BASE_URL}/api/products?ts=${Date.now()}`)
     setProducts(response.data);
   } catch (error) {
     console.error('Error fetching products:', error);

@@ -3,8 +3,9 @@ import axios from 'axios';
 import ProductCard from '../components/ProductCard';
 import { useSearch } from "../pages/SearchContext";
 import '../App.css';
+import { BASE_URL } from "../config";
 
-const BASE_URL = "https://sns-backend-h7lf.onrender.com";
+
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -12,30 +13,35 @@ function Home() {
   const { search } = useSearch();
 
 
- const fetchProducts = async () => {
-  try {
-    setLoading(true); // 🔥 ADD THIS (important)
-
-    const response = await axios.get(
-      `${BASE_URL}/api/products?ts=${Date.now()}`
-    );
-
-    setProducts(Array.isArray(response.data) ? response.data : []);
-  } catch (error) {
-    console.error("Error fetching products:", error);
-  } finally {
-    setLoading(false);
-  }
-};
-
  useEffect(() => {
+  let isMounted = true;
+
+  const fetchProducts = async () => {
+    try {
+      setLoading(true);
+
+     const response = await axios.get(
+  `${BASE_URL}/api/products?ts=${Date.now()}`
+);
+
+      if (isMounted) {
+        setProducts(Array.isArray(response.data) ? response.data : []);
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    } finally {
+      if (isMounted) setLoading(false);
+    }
+  };
+
   fetchProducts();
 
-  const interval = setInterval(() => {
-    fetchProducts();
-  }, 5000);
+  const interval = setInterval(fetchProducts, 5000);
 
-  return () => clearInterval(interval);
+  return () => {
+    isMounted = false;
+    clearInterval(interval);
+  };
 }, []);
 
 
