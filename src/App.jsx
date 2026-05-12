@@ -75,7 +75,7 @@ export default function App() {
 
   return (
     <Router>
-      <CartProvider userId={userId}>
+     <CartProvider userId={userId}>
         <SearchProvider>
           <AppWrapper />
         </SearchProvider>
