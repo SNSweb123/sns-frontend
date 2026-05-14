@@ -8,6 +8,10 @@ import { BASE_URL } from "../config";
 
 
 function AdminPanel() {
+
+const ADMIN_KEY =
+  import.meta.env.VITE_ADMIN_SECRET;
+
   const [activeTab, setActiveTab] = useState('products'); 
   const [products, setProducts] = useState([]);
   const [newProduct, setNewProduct] = useState({
@@ -79,7 +83,15 @@ const handleSubmit = async (e) => {
 
     if (editMode) {
       // 🔥 UPDATE PRODUCT
-      await axios.put(`/api/products/${editingId}`, payload);
+  await axios.put(
+  `${BASE_URL}/api/products/${editingId}`,
+  payload,
+  {
+    headers: {
+      "x-admin-key": ADMIN_KEY
+    }
+  }
+);
 
       Swal.fire({
         icon: 'success',
@@ -93,7 +105,15 @@ const handleSubmit = async (e) => {
 
     } else {
       // 🔥 CREATE PRODUCT
-      await axios.post('/api/products', payload);
+await axios.post(
+  `${BASE_URL}/api/products`,
+  payload,
+  {
+    headers: {
+      "x-admin-key": ADMIN_KEY
+    }
+  }
+);
 
       Swal.fire({
         icon: 'success',
@@ -147,7 +167,14 @@ const handleSubmit = async (e) => {
   if (!result.isConfirmed) return;
 
   try {
-    await axios.delete(`/api/products/${id}`);
+await axios.delete(
+  `${BASE_URL}/api/products/${id}`,
+  {
+    headers: {
+      "x-admin-key": ADMIN_KEY
+    }
+  }
+);
 
     Swal.fire({
       icon: 'success',
@@ -248,10 +275,16 @@ onChange={async (e) => {
 
   const formData = new FormData();
   formData.append("image", file);
-const res = await fetch("http://localhost:5000/api/upload", {
-  method: "POST",
-  body: formData,
-});
+const res = await fetch(
+  `${BASE_URL}/api/upload`,
+  {
+    method: "POST",
+    headers: {
+      "x-admin-key": ADMIN_KEY
+    },
+    body: formData,
+  }
+);
 
 const data = await res.json();
 
@@ -509,10 +542,15 @@ ABC123, XYZ789, OFFER50, SAVE20..."
               <button
                 className="delete-coupon-btn"
                 onClick={async () => {
-                  await axios.put(
-                    `/api/products/${product._id}/coupon/delete`,
-                    { code: c.code }
-                  );
+               await axios.put(
+  `${BASE_URL}/api/products/${product._id}/coupon/delete`,
+  { code: c.code },
+  {
+    headers: {
+      "x-admin-key": ADMIN_KEY
+    }
+  }
+);
 
                   fetchProducts();
                 }}

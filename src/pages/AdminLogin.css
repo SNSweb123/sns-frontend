@@ -3,10 +3,11 @@
 ========================= */
 
 .admin-login {
+  
   width: 100%;
   max-width: 420px;
 
-  margin: 80px auto;
+  margin: 160px auto 60px;
 
   padding: 45px 35px;
 

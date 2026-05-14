@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AdminLogin.css';
+import { BASE_URL } from "../config";
 
 function AdminLogin() {
 
@@ -15,8 +16,7 @@ function AdminLogin() {
 
     try {
 
-      const res = await axios.post(
-        '/api/admin/login',
+    const res = await axios.post(`${BASE_URL}/api/admin/login`,
         { password }
       );
 
@@ -71,9 +71,6 @@ function AdminLogin() {
 
 
 </div>
-
-
-
 
 
   );

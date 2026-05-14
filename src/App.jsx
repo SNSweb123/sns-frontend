@@ -17,21 +17,28 @@ import { SearchProvider } from "./pages/SearchContext";
 function AppWrapper() {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === "v") {
-        event.preventDefault();
+ useEffect(() => {
+  const handleKeyDown = (event) => {
 
-        localStorage.setItem("isAdmin", "true");
-        navigate("/admin");
-      }
-    };
+    if (
+      event.ctrlKey &&
+      event.shiftKey &&
+      event.key.toLowerCase() === "v"
+    ) {
 
-    window.addEventListener("keydown", handleKeyDown);
+      event.preventDefault();
 
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [navigate]);
+      // ✅ Open login page only
+      navigate("/admin-login");
+    }
+  };
 
+  window.addEventListener("keydown", handleKeyDown);
+
+  return () =>
+    window.removeEventListener("keydown", handleKeyDown);
+
+}, [navigate]);
 
   return (
     <>
