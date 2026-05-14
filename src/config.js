@@ -1,1 +1,2 @@
-export const BASE_URL = "https://sns-backend-h7lf.onrender.com";
+export const BASE_URL =
+"https://sns-backend-seven.vercel.app";

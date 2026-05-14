@@ -11,7 +11,7 @@ function TransactionHistory() {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  const BASE_URL = "https://sns-backend-h7lf.onrender.com";
+  const BASE_URL = "https://sns-backend-seven.vercel.app";
   useEffect(() => {
     const fetchOrders = async () => {
       try {

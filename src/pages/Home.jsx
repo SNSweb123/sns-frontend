@@ -20,13 +20,14 @@ function Home() {
     try {
       setLoading(true);
 
-     const response = await axios.get(
-  `${BASE_URL}/api/products?ts=${Date.now()}`
-);
+      const response = await axios.get(
+        `${BASE_URL}/api/products`
+      );
 
       if (isMounted) {
         setProducts(Array.isArray(response.data) ? response.data : []);
       }
+
     } catch (error) {
       console.error("Error fetching products:", error);
     } finally {
@@ -36,11 +37,8 @@ function Home() {
 
   fetchProducts();
 
-  const interval = setInterval(fetchProducts, 5000);
-
   return () => {
     isMounted = false;
-    clearInterval(interval);
   };
 }, []);
 
