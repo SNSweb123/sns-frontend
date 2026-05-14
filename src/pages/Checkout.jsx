@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BASE_URL } from "../config";
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../pages/CartContext';
 import { AiOutlineHome } from "react-icons/ai";
@@ -112,9 +113,12 @@ if (!res || !window.Razorpay) {
   const amount = calculateTotal();
 
   // 1️⃣ create order from backend
-  const { data } = await axios.post("/api/payment/create-order", {
+const { data } = await axios.post(
+  `${BASE_URL}/api/payment/create-order`,
+  {
     amount
-  });
+  }
+);
 
 const options = {
   key: "rzp_live_SnfJZGmsVjX1gF",
@@ -142,8 +146,8 @@ const options = {
   try {
 
     // ✅ payment verify + order save
-    const verifyRes = await axios.post(
-      "/api/payment/verify",
+const verifyRes = await axios.post(
+  `${BASE_URL}/api/payment/verify`,
       {
         razorpay_order_id: response.razorpay_order_id,
         razorpay_payment_id: response.razorpay_payment_id,
