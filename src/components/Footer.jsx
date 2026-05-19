@@ -107,7 +107,6 @@ const Footer = () => {
           <div>
             <h4>Contact</h4>
             <p>snswebofficial@gmail.com</p>
-            <p>+91 9372641550</p>
             <span className="badge">24/7 Active</span>
           </div>
 

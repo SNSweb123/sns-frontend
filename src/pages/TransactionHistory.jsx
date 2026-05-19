@@ -9,6 +9,7 @@ function TransactionHistory() {
   // 🔍 search + pagination state
   const [search, setSearch] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [orderFilter, setOrderFilter] = useState("all");
   const itemsPerPage = 8;
 
   const BASE_URL = "https://sns-backend-seven.vercel.app";
@@ -27,14 +28,30 @@ function TransactionHistory() {
     fetchOrders();
   }, []);
 
-  // 🔍 Filter orders
-  const filteredOrders = orders.filter((order) =>
-   `${order.fullName} ${order.email} ${order.orderId} ${
-  order.items?.map(i => i.productName).join(' ')
-} ${order.transactionId}`
+
+
+
+  const filteredOrders = orders.filter((order) => {
+
+  // 🔍 Search Filter
+  const matchesSearch =
+    `${order.fullName} ${order.email} ${order.orderId} ${
+      order.items?.map(i => i.productName).join(' ')
+    } ${order.transactionId}`
       .toLowerCase()
-      .includes(search.toLowerCase())
-  );
+      .includes(search.toLowerCase());
+
+  // 🎯 Type Filter
+  const matchesType =
+    orderFilter === "all"
+      ? true
+      : order.items?.some(
+          item => item.productType === orderFilter
+        );
+
+  return matchesSearch && matchesType;
+});
+
 
   // 📄 Pagination logic
   const totalPages = Math.ceil(filteredOrders.length / itemsPerPage);
@@ -44,9 +61,61 @@ function TransactionHistory() {
     startIndex + itemsPerPage
   );
 
+   // ✅ Subscription Orders
+const subscriptionOrders = filteredOrders.filter(order =>
+  order.items?.some(
+    item => item.productType === "subscription"
+  )
+);
+
+// ✅ Gift Voucher Orders
+const voucherOrders = filteredOrders.filter(order =>
+  order.items?.some(
+    item => item.productType === "gift-voucher"
+  )
+);
+
+
   return (
     <div className="transaction-wrapper">
       <h2 className="transaction-title">📄 Transaction / Order History</h2>
+
+    
+    <div className="order-filter-tabs">
+
+  <button
+    className={orderFilter === "all" ? "active-filter" : ""}
+    onClick={() => {
+      setOrderFilter("all");
+      setCurrentPage(1);
+    }}
+  >
+    All Orders
+  </button>
+
+  <button
+    className={orderFilter === "subscription" ? "active-filter" : ""}
+    onClick={() => {
+      setOrderFilter("subscription");
+      setCurrentPage(1);
+    }}
+  >
+    🛒 Subscription
+  </button>
+
+  <button
+    className={orderFilter === "gift-voucher" ? "active-filter" : ""}
+    onClick={() => {
+      setOrderFilter("gift-voucher");
+      setCurrentPage(1);
+    }}
+  >
+    🎁 Gift Voucher
+  </button>
+
+</div>
+
+
 
       {/* 🔍 Search */}
       <input
@@ -60,95 +129,232 @@ function TransactionHistory() {
         }}
       />
 
-      {loading ? (
-        <div className="transaction-loading">Loading orders...</div>
-      ) : currentOrders.length === 0 ? (
-        <div className="transaction-empty">No orders found</div>
-      ) : (
-        <>
-          <div className="transaction-table-container">
-            <table className="transaction-table">
-              <thead>
-                <tr>
-                  <th>Sr No</th>
-                  <th>Order ID</th>
-                  <th>Razorpay Order ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>Product</th>
-                  <th>Qty</th>
-                  <th>Total</th>
-                  <th>Transaction ID</th>
-                  <th>Date</th>
-                </tr>
-              </thead>
+     {loading ? (
+  <div className="transaction-loading">
+    Loading orders...
+  </div>
 
-              <tbody>
-                {currentOrders.map((order, index) => (
-                  <tr key={order._id}>
-                    <td className="sr-no">
-                      {startIndex + index + 1}
-                    </td>
-                    <td>{order.orderId}</td>
+) : currentOrders.length === 0 ? (
 
-<td>
-  {order.razorpayOrderId || '—'}
-</td>
+  <div className="transaction-empty">
+    No orders found
+  </div>
 
-<td>{order.fullName}</td>
+) : (
 
-<td>{order.email}</td>
+  <>
 
-<td>{order.phone}</td>
-                   <td className="product-cell">
-  {order.items && order.items.length > 0
-    ? order.items.map((item, i) => (
-        <div key={i}>{item.productName}</div>
-      ))
-    : "No Product"}
-</td>
+    {/* ================= SUBSCRIPTION TABLE ================= */}
 
-<td className="center">
-  {order.items && order.items.length > 0
-    ? order.items.map((item, i) => (
-        <div key={i}>{item.quantity}</div>
-      ))
-    : "0"}
-</td>
-                    <td className="price">
-                      ₹{order.totalPriceINR.toLocaleString('en-IN')}
-                    </td>
-                    <td className="txn-id">{order.transactionId || '—'}</td>
-                    <td>{new Date(order.createdAt).toLocaleString()}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+    <h3 className="table-heading">
+      🛒 Subscription Orders ({subscriptionOrders.length})
+    </h3>
 
-          {/* 📄 Pagination */}
-          <div className="pagination">
-            <button
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage((p) => p - 1)}
-            >
-              ⬅ Prev
-            </button>
+    <div className="transaction-table-container">
 
-            <span>
-              Page {currentPage} of {totalPages}
-            </span>
+      <table className="transaction-table">
 
-            <button
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage((p) => p + 1)}
-            >
-              Next ➡
-            </button>
-          </div>
-        </>
-      )}
+        <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>Order ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Products</th>
+            <th>Qty</th>
+            <th>Total</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {subscriptionOrders.map((order, index) => (
+
+            <tr key={order._id}>
+
+              <td>{index + 1}</td>
+
+              <td>{order.orderId}</td>
+
+              <td>{order.fullName}</td>
+
+              <td>{order.email}</td>
+
+              <td>
+                {order.items
+                  ?.filter(
+                    item =>
+                      item.productType === "subscription"
+                  )
+                  .map((item, i) => (
+                  <div key={i} className="product-line">
+
+  <span className={
+    item.productType === "subscription"
+      ? "subscription-badge"
+      : "voucher-badge"
+  }>
+    {item.productType === "subscription"
+      ? "SUB"
+      : "CODE"}
+  </span>
+
+  {item.productName}
+
+</div>
+                  ))}
+              </td>
+
+              <td>
+                {order.items
+                  ?.filter(
+                    item =>
+                      item.productType === "subscription"
+                  )
+                  .map((item, i) => (
+                    <div key={i}>
+                      {item.quantity}
+                    </div>
+                  ))}
+              </td>
+
+              <td>
+                ₹{order.totalPriceINR.toLocaleString('en-IN')}
+              </td>
+
+              <td>
+                {new Date(order.createdAt).toLocaleString()}
+              </td>
+
+            </tr>
+
+          ))}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    {/* ================= VOUCHER TABLE ================= */}
+
+    <h3 className="table-heading">
+      🎁 Gift Voucher Orders ({voucherOrders.length})
+    </h3>
+
+    <div className="transaction-table-container">
+
+      <table className="transaction-table">
+
+        <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>Order ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Voucher Products</th>
+            <th>Delivered Codes</th>
+            <th>Total</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          {voucherOrders.map((order, index) => (
+
+            <tr key={order._id}>
+
+              <td>{index + 1}</td>
+
+              <td>{order.orderId}</td>
+
+              <td>{order.fullName}</td>
+
+              <td>{order.email}</td>
+
+              <td>
+                {order.items
+                  ?.filter(
+                    item =>
+                      item.productType === "gift-voucher"
+                  )
+                  .map((item, i) => (
+                  <div key={i} className="product-line">
+
+  <span className={
+    item.productType === "subscription"
+      ? "subscription-badge"
+      : "voucher-badge"
+  }>
+    {item.productType === "subscription"
+      ? "SUB"
+      : "CODE"}
+  </span>
+
+  {item.productName}
+
+</div>
+                  ))}
+              </td>
+
+              <td>
+                {order.deliveredCodes?.length > 0
+                  ? order.deliveredCodes.map((c, i) => (
+                      <div key={i}>
+                        🟢 {c.code}
+                      </div>
+                    ))
+                  : "—"}
+              </td>
+
+              <td>
+                ₹{order.totalPriceINR.toLocaleString('en-IN')}
+              </td>
+
+              <td>
+                {new Date(order.createdAt).toLocaleString()}
+              </td>
+
+            </tr>
+
+          ))}
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+
+    {/* ================= PAGINATION ================= */}
+
+    <div className="pagination">
+
+      <button
+        disabled={currentPage === 1}
+        onClick={() => setCurrentPage((p) => p - 1)}
+      >
+        ⬅ Prev
+      </button>
+
+      <span>
+        Page {currentPage} of {totalPages}
+      </span>
+
+      <button
+        disabled={currentPage === totalPages}
+        onClick={() => setCurrentPage((p) => p + 1)}
+      >
+        Next ➡
+      </button>
+
+    </div>
+
+  </>
+)}
     </div>
   );
 }

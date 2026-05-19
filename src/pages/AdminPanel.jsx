@@ -205,12 +205,14 @@ const handleEdit = (product) => {
 
 
 const GRADIENT_OPTIONS = [
+
+  // EXISTING
   { label: 'Purple → Blue', value: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)' },
   { label: 'Sunset Orange', value: 'linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%)' },
   { label: 'Minty Green', value: 'linear-gradient(135deg, #43cea2 0%, #185a9d 100%)' },
   { label: 'Pink → Purple', value: 'linear-gradient(135deg, #ff6a95 0%, #a18cd1 100%)' },
   { label: 'Blue → Cyan', value: 'linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)' },
-   { label: 'Sunset Pink → Yellow', value: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)' },
+  { label: 'Sunset Pink → Yellow', value: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)' },
   { label: 'Teal → Blue', value: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)' },
   { label: 'Red → Orange', value: 'linear-gradient(135deg, #ff512f 0%, #f09819 100%)' },
   { label: 'Violet → Pink', value: 'linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%)' },
@@ -219,7 +221,69 @@ const GRADIENT_OPTIONS = [
   { label: 'Purple → Cyan', value: 'linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%)' },
   { label: 'Pink → Orange', value: 'linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%)' },
   { label: 'Sky Blue → Blue', value: 'linear-gradient(135deg, #2980b9 0%, #6dd5fa 100%)' },
-  { label: 'Sunrise', value: 'linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)' }
+  { label: 'Sunrise', value: 'linear-gradient(135deg, #fddb92 0%, #d1fdff 100%)' },
+
+  // NEW PREMIUM COLORS
+  { label: 'Royal Gold', value: 'linear-gradient(135deg, #F7971E 0%, #FFD200 100%)' },
+
+  { label: 'Luxury Black Gold', value: 'linear-gradient(135deg, #232526 0%, #FFD700 100%)' },
+
+  { label: 'Neon Purple', value: 'linear-gradient(135deg, #fc00ff 0%, #00dbde 100%)' },
+
+  { label: 'Ocean Deep', value: 'linear-gradient(135deg, #2E3192 0%, #1BFFFF 100%)' },
+
+  { label: 'Candy Pink', value: 'linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%)' },
+
+  { label: 'Dark Galaxy', value: 'linear-gradient(135deg, #200122 0%, #6f0000 100%)' },
+
+  { label: 'Ice Blue', value: 'linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%)' },
+
+  { label: 'Emerald Shine', value: 'linear-gradient(135deg, #348F50 0%, #56B4D3 100%)' },
+
+  { label: 'Instagram Style', value: 'linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)' },
+
+  { label: 'Fire Red', value: 'linear-gradient(135deg, #cb2d3e 0%, #ef473a 100%)' },
+
+  { label: 'Cyberpunk', value: 'linear-gradient(135deg, #f953c6 0%, #b91d73 100%)' },
+
+  { label: 'Aqua Marine', value: 'linear-gradient(135deg, #1A2980 0%, #26D0CE 100%)' },
+
+  { label: 'Peach Love', value: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)' },
+
+  { label: 'Midnight Purple', value: 'linear-gradient(135deg, #41295a 0%, #2F0743 100%)' },
+
+  { label: 'Frozen', value: 'linear-gradient(135deg, #83a4d4 0%, #b6fbff 100%)' },
+
+  { label: 'Luxury Wine', value: 'linear-gradient(135deg, #5f0a87 0%, #a4508b 100%)' },
+
+  { label: 'Electric Blue', value: 'linear-gradient(135deg, #4776E6 0%, #8E54E9 100%)' },
+
+  { label: 'Rose Gold', value: 'linear-gradient(135deg, #B76E79 0%, #FFD1DC 100%)' },
+
+  { label: 'Soft Lavender', value: 'linear-gradient(135deg, #c471f5 0%, #fa71cd 100%)' },
+
+  { label: 'Dark Neon', value: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' },
+
+  { label: 'Tropical Paradise', value: 'linear-gradient(135deg, #00c9ff 0%, #92fe9d 100%)' },
+
+  { label: 'Ruby Red', value: 'linear-gradient(135deg, #780206 0%, #061161 100%)' },
+
+  { label: 'Cool Sky', value: 'linear-gradient(135deg, #2980B9 0%, #6DD5FA 50%, #FFFFFF 100%)' },
+
+  { label: 'Deep Space', value: 'linear-gradient(135deg, #000428 0%, #004e92 100%)' },
+
+  { label: 'Golden Hour', value: 'linear-gradient(135deg, #f7971e 0%, #ffd200 50%, #fff7aa 100%)' },
+
+  { label: 'Luxury Emerald', value: 'linear-gradient(135deg, #0BAB64 0%, #3BB78F 100%)' },
+
+  { label: 'Netflix Style', value: 'linear-gradient(135deg, #8E0E00 0%, #1F1C18 100%)' },
+
+  { label: 'Dark Knight', value: 'linear-gradient(135deg, #232526 0%, #414345 100%)' },
+
+  { label: 'Rainbow Pop', value: 'linear-gradient(135deg, #ff0080 0%, #ff8c00 25%, #40e0d0 50%, #8a2be2 100%)' },
+
+  { label: 'Luxury Silver', value: 'linear-gradient(135deg, #bdc3c7 0%, #2c3e50 100%)' }
+
 ];
 
 const handleLogout = () => {

@@ -3,7 +3,6 @@ import {
   FaHeadset,
   FaComments,
   FaEnvelope,
-  FaPhoneAlt,
   FaMapMarkerAlt
 } from "react-icons/fa";
 import "./Contact.css";
@@ -38,7 +37,7 @@ const Contact = () => {
   className="chat-btn"
   onClick={() =>
     window.open(
-      "https://wa.me/910000000000?text=Hello%20SNS%20Support,%20I%20need%20help.",
+      "https://t.me/YOUR_TELEGRAM_USERNAME?text=Hello%20SNS%20Support",
       "_blank"
     )
   }
@@ -54,15 +53,9 @@ const Contact = () => {
           </div>
 
           <div className="contact-card">
-            <div className="icon-wrap"><FaPhoneAlt /></div>
-            <h3>Phone</h3>
-            <p>+91 9372641550</p>
-          </div>
-
-          <div className="contact-card">
             <div className="icon-wrap"><FaMapMarkerAlt /></div>
-            <h3>Global Reach</h3>
-            <p>Serving customers worldwide 🌍</p>
+            <h3>Serving Across India</h3>
+            <p>Fast digital delivery available throughout India🌍</p>
           </div>
 
         </div>
@@ -86,11 +79,11 @@ const Contact = () => {
             </div>
           </div>
 
-          <button
+        <button
   className="panel-btn"
   onClick={() =>
     window.open(
-      "https://wa.me/919372641550?text=Hello%20SNS%20Support,%20I%20need%20assistance.",
+      "https://t.me/YOUR_TELEGRAM_USERNAME?text=Hello%20SNS%20Support",
       "_blank"
     )
   }

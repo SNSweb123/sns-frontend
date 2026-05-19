@@ -41,15 +41,12 @@ const handleClick = () => {
       <div className="card-body">
         <h2 className="product-name">{product.name}</h2>
         <p className="product-subtitle">{product.subtitle}</p>
-        {product.type === "gift-voucher" ? (
-  <p style={{ color: "#fff", fontWeight: "bold",fontSize:"18px" }}>
-    🎁 Gift Voucher
-  </p>
-) : (
-  <p style={{ color: "#fff", fontWeight: "bold",fontSize:"18px" }}>
-    📺 Subscription
-  </p>
-)}
+
+       <div className="product-type-badge">
+  {product.type === "gift-voucher"
+    ? "🎁 Gift Voucher"
+    : "📺 Subscription"}
+</div>
         
         <div className="product-details">
           <div className="detail-item">

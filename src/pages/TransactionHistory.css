@@ -183,3 +183,60 @@
     min-width: 700px;
   }
 }
+
+.table-heading{
+  margin-top:40px;
+  margin-bottom:15px;
+  font-size:24px;
+  font-weight:700;
+  color:white;
+}
+.order-filter-tabs{
+  display:flex;
+  gap:12px;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+}
+
+.order-filter-tabs button{
+  border:none;
+  padding:10px 18px;
+  border-radius:12px;
+  background:#1f1f1f;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.order-filter-tabs button:hover{
+  transform:translateY(-2px);
+}
+
+.active-filter{
+  background:linear-gradient(135deg,#667eea,#764ba2) !important;
+}
+
+.product-line{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:6px;
+}
+
+.subscription-badge,
+.voucher-badge{
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:10px;
+  font-weight:700;
+  color:white;
+}
+
+.subscription-badge{
+  background:#2563eb;
+}
+
+.voucher-badge{
+  background:#16a34a;
+}
