@@ -10,7 +10,9 @@ import { BASE_URL } from "../config";
 function AdminPanel() {
 
 const ADMIN_KEY =
-  import.meta.env.VITE_ADMIN_SECRET;
+  process.env.REACT_APP_ADMIN_SECRET;
+
+console.log(ADMIN_KEY)
 
   const [activeTab, setActiveTab] = useState('products'); 
   const [products, setProducts] = useState([]);
@@ -339,14 +341,16 @@ onChange={async (e) => {
 
   const formData = new FormData();
   formData.append("image", file);
+
 const res = await fetch(
   `${BASE_URL}/api/upload`,
   {
     method: "POST",
-    headers: {
-      "x-admin-key": ADMIN_KEY
-    },
     body: formData,
+    headers: {
+      Accept: "application/json",
+      "x-admin-key": String(ADMIN_KEY).trim()
+    }
   }
 );
 
@@ -427,7 +431,7 @@ ABC123, XYZ789, OFFER50, SAVE20..."
 >
   <option value="">Select Gradient</option>
   {GRADIENT_OPTIONS.map((g) => (
-    <option key={g.value} value={g.value}>
+    <option key={g.label} value={g.value}>
       {g.label}
     </option>
   ))}
