@@ -217,7 +217,6 @@ const GRADIENT_OPTIONS = [
   { label: 'Sunset Pink → Yellow', value: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)' },
   { label: 'Teal → Blue', value: 'linear-gradient(135deg, #11998e 0%, #38ef7d 100%)' },
   { label: 'Red → Orange', value: 'linear-gradient(135deg, #ff512f 0%, #f09819 100%)' },
-  { label: 'Violet → Pink', value: 'linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%)' },
   { label: 'Orange → Yellow', value: 'linear-gradient(135deg, #f7971e 0%, #ffd200 100%)' },
   { label: 'Green → Lime', value: 'linear-gradient(135deg, #56ab2f 0%, #a8e063 100%)' },
   { label: 'Purple → Cyan', value: 'linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%)' },
@@ -430,11 +429,11 @@ ABC123, XYZ789, OFFER50, SAVE20..."
   style={{ background: newProduct.gradient, color: '#090009' }}
 >
   <option value="">Select Gradient</option>
-  {GRADIENT_OPTIONS.map((g) => (
-    <option key={g.label} value={g.value}>
-      {g.label}
-    </option>
-  ))}
+{GRADIENT_OPTIONS.map((g, index) => (
+  <option key={g.label + index} value={g.value}>
+    {g.label}
+  </option>
+))}
 </select>
 
 
