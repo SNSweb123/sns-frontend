@@ -121,7 +121,7 @@ const { data } = await axios.post(
 );
 
 const options = {
-  key: "rzp_live_SnfJZGmsVjX1gF",
+  key: "rzp_live_SqsJZi3OpN5aKO",
   amount: data.amount,
   currency: "INR",
   name: "Your Store",

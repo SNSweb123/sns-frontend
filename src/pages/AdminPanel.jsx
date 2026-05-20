@@ -369,11 +369,40 @@ const data = await res.json();
              </div>
               <input type="text" name="subtitle" placeholder="Subtitle" value={newProduct.subtitle} onChange={handleInputChange} />
               <div className="form-row">
-                <select name="type" value={newProduct.type} onChange={handleInputChange} required>
-  <option value="">Select Type</option>
-  <option value="subscription">Subscription</option>
-  <option value="gift-voucher">Gift Voucher</option>
-</select>
+              <div className="custom-select-wrapper">
+
+  <label className="select-label">
+    Product Type
+  </label>
+
+  <div className="select-container">
+
+    <select
+      name="type"
+      value={newProduct.type}
+      onChange={handleInputChange}
+      required
+      className="modern-select"
+    >
+      <option value="">✨ Select Product Type</option>
+
+      <option value="subscription">
+        📺 Subscription
+      </option>
+
+      <option value="gift-voucher">
+        🎁 Gift Voucher
+      </option>
+
+    </select>
+
+    <span className="select-icon">
+      ▼
+    </span>
+
+  </div>
+
+</div>
                 <input type="text" name="validity" placeholder="Validity" value={newProduct.validity} onChange={handleInputChange} />
               </div>
               <input type="text" name="delivery" placeholder="Delivery" value={newProduct.delivery} onChange={handleInputChange} />

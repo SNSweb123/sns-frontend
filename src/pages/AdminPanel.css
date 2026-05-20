@@ -897,3 +897,132 @@
 .admin-title{
   text-align: center;
 }
+
+/* ================================
+   PREMIUM SELECT UI
+================================ */
+
+.custom-select-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* LABEL */
+
+.select-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.4px;
+}
+
+/* CONTAINER */
+
+.select-container {
+  position: relative;
+  width: 100%;
+}
+
+/* MAIN SELECT */
+
+.modern-select {
+  width: 100%;
+
+  padding:
+    16px 55px 16px 18px;
+
+  border-radius: 18px;
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.03)
+    );
+
+  backdrop-filter: blur(14px);
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  appearance: none;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  box-shadow:
+    0 8px 25px rgba(0,0,0,0.25);
+}
+
+/* HOVER */
+
+.modern-select:hover {
+  border-color: rgba(124,58,237,0.4);
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 12px 30px rgba(124,58,237,0.18);
+}
+
+/* FOCUS */
+
+.modern-select:focus {
+  outline: none;
+
+  border-color: #7c3aed;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(124,58,237,0.12),
+      rgba(6,182,212,0.08)
+    );
+
+  box-shadow:
+    0 0 0 4px rgba(124,58,237,0.15),
+    0 15px 35px rgba(124,58,237,0.2);
+}
+
+/* OPTIONS */
+
+.modern-select option {
+  background: #111827;
+  color: white;
+  padding: 12px;
+}
+
+/* CUSTOM ICON */
+
+.select-icon {
+  position: absolute;
+
+  top: 50%;
+  right: 18px;
+
+  transform: translateY(-50%);
+
+  pointer-events: none;
+
+  color: #cbd5e1;
+
+  font-size: 13px;
+
+  transition: 0.3s ease;
+}
+
+/* ANIMATION */
+
+.select-container:hover .select-icon {
+  color: #ffffff;
+  transform:
+    translateY(-50%)
+    rotate(180deg);
+}
